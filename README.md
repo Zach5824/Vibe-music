@@ -1,7 +1,9 @@
 Studio Manager
+
 Studio Manager is a professional-grade Single Page Application (SPA) designed for music producers and studio administrators to organize, track, and manage their creative assets. Built with React and Material UI, it offers a seamless interface for cataloging musical tracks with rich metadata.
 
 🌟 Key Features
+
 Executive Dashboard: A high-level overview of studio assets, including track counts, total duration, and playlist statistics.
 
 Dynamic Music Catalog: A searchable and filterable gallery. Users can drill down into their library by Genre, BPM, or Musical Key.
@@ -13,6 +15,7 @@ Custom Theming: A bespoke UI experience utilizing Material UI’s theming engine
 Responsive Routing: Fast, client-side navigation powered by React Router, ensuring zero page reloads.
 
 🛠️ Technical Architecture
+
 The project is built using a modern frontend stack designed for performance and maintainability.
 
 The Tech Stack
