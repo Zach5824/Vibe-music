@@ -79,3 +79,20 @@ const LandingPage = () => (
     >
       Your complete music catalog solution. Organize, manage, and discover your entire collection with modern tools.
     </Typography>
+     <Grid container spacing={4} sx={{ maxWidth: 1200, mx: 'auto', px: 2 }}>
+      <Grid item xs={12} sm={6} md={3}>
+        <StatCard
+          icon={<MusicNoteIcon />}
+          value="1,247"
+          label="Total Tracks"
+          color="#00d4ff"
+        />
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+        <StatCard
+          icon={<AlbumIcon />}
+          value="156"
+          label="Albums"
+          color="#ff4081"
+        />
+      </Grid>
