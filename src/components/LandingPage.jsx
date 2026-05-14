@@ -96,3 +96,24 @@ const LandingPage = () => (
           color="#ff4081"
         />
       </Grid>
+       <Grid item xs={12} sm={6} md={3}>
+        <StatCard
+          icon={<PlaylistPlayIcon />}
+          value="43"
+          label="Playlists"
+          color="#4caf50"
+        />
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+        <StatCard
+          icon={<AccessTimeIcon />}
+          value="2,891"
+          label="Hours"
+          color="#ff9800"
+        />
+      </Grid>
+    </Grid>
+  </Box>
+);
+
+export default LandingPage;
