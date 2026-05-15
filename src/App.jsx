@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate, useLocation, Routes, Route } from 'react-router-dom';
 import { ThemeProvider, CssBaseline, AppBar, Toolbar, Typography, Button, Container, Box, Tab, Tabs } from '@mui/material';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import theme from './components/theme';
@@ -15,25 +16,25 @@ function App() {
     { id: 5, name: "Hip Hop Flow", artist: "Urban Beat", genre: "Hip Hop", bpm: 95, key: "Dm", duration: "3:15" },
   ]);
 
-  const [currentTab, setCurrentTab] = useState(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const addTrack = (newTrack) => setTracks([...tracks, { ...newTrack, id: Date.now() }]);
 
-  const handleTabChange = (event, newValue) => {
-    setCurrentTab(newValue);
+  const getTabValue = () => {
+    switch (location.pathname) {
+      case '/catalog':
+        return 1;
+      case '/admin':
+        return 2;
+      default:
+        return 0;
+    }
   };
 
-  const renderCurrentPage = () => {
-    switch (currentTab) {
-      case 0:
-        return <LandingPage />;
-      case 1:
-        return <Catalog tracks={tracks} />;
-      case 2:
-        return <Admin addTrack={addTrack} />;
-      default:
-        return <LandingPage />;
-    }
+  const handleTabChange = (event, newValue) => {
+    const paths = ['/', '/catalog', '/admin'];
+    navigate(paths[newValue]);
   };
 
   return (
@@ -59,7 +60,7 @@ function App() {
 
       <Box sx={{ borderBottom: 1, borderColor: 'divider', backgroundColor: 'rgba(18,18,18,0.9)' }}>
         <Tabs
-          value={currentTab}
+          value={getTabValue()}
           onChange={handleTabChange}
           centered
           sx={{
@@ -81,7 +82,11 @@ function App() {
       </Box>
 
       <Container maxWidth="xl" sx={{ mt: 4 }}>
-        {renderCurrentPage()}
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/catalog" element={<Catalog tracks={tracks} />} />
+          <Route path="/admin" element={<Admin addTrack={addTrack} />} />
+        </Routes>
       </Container>
     </ThemeProvider>
   );
